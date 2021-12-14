@@ -3,12 +3,22 @@ package main
 import "fmt"
 
 const englishPrefix = "Hello "
+const spanishPrefix = "Hola "
 
-func Hello(name string) string {
-	if name == "" {
-		return "Hello World"
+func Hello(name string, lang string) string {
+	var prefix string
+	if lang == "" {
+		lang = "EN"
 	}
-	return fmt.Sprintf("%s%s", englishPrefix, name)
+	if lang == "EN" {
+		prefix = englishPrefix
+	} else if lang == "SP" {
+		prefix = spanishPrefix
+	}
+	if name == "" {
+		name = "World"
+	}
+	return fmt.Sprintf("%s%s", prefix, name)
 }
 
 func Bye() string {
@@ -16,5 +26,5 @@ func Bye() string {
 }
 
 func main() {
-	fmt.Println(Hello("Pierrot"))
+	fmt.Println(Hello("Pierrot", "EN"))
 }
